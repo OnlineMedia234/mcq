@@ -1,0 +1,335 @@
+<template>
+    <div class="page">
+        <div class="fab fab-right-bottom">
+            <a href="#" class="finish-reg color-indigo">
+                <i class="icon material-icons md-only color-white">check</i>
+            </a>
+        </div>
+        <div class="navbar">
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title">Register</div>
+                <div class="right">
+                    <a href="#" class="link finish-reg">
+                        <i class="icon material-icons md-only">check</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+
+            <!--upload-->
+
+            <script type="text/template" id="qq-template-manual-trigger">
+                <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="">
+                    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+                        <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+                    </div>
+                    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+                        <span class="qq-upload-drop-area-text-selector"></span>
+                    </div>
+                    <div class="buttons">
+                        Profile Picture:
+                        <div class="center" align="center">
+                            <i class="qq-upload-button-selector qq-upload-button button button-fill" id="up-btns"> <i class="material-icons">add_a_photo</i>Upload Profile Picture</i>
+                        </div>
+
+                        <button type="button" id="trigger-upload" class="button button-raised hide">
+                            Upload
+                        </button>
+                    </div>
+                    <span class="qq-drop-processing-selector qq-drop-processing">
+                            <span>Processing dropped files...</span>
+                    <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+                    </span>
+                    <ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals">
+                        <li>
+                            <div class="qq-progress-bar-container-selector">
+                                <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+                            </div>
+                            <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+                            <img class="qq-thumbnail-selector" qq-max-size="100" qq-server-scale>
+                            <span class="qq-upload-file-selector qq-upload-file"></span>
+                            <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+                            <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+                            <span class="qq-upload-size-selector qq-upload-size"></span>
+                            <button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel">Cancel</button>
+                            <button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry">Retry</button>
+                            <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">Delete</button>
+                            <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                        </li>
+                    </ul>
+
+                    <dialog class="qq-alert-dialog-selector">
+                        <div class="qq-dialog-message-selector"></div>
+                        <div class="qq-dialog-buttons">
+                            <button type="button" class="qq-cancel-button-selector">Close</button>
+                        </div>
+                    </dialog>
+
+                    <dialog class="qq-confirm-dialog-selector">
+                        <div class="qq-dialog-message-selector"></div>
+                        <div class="qq-dialog-buttons">
+                            <button type="button" class="qq-cancel-button-selector">No</button>
+                            <button type="button" class="qq-ok-button-selector">Yes</button>
+                        </div>
+                    </dialog>
+
+                    <dialog class="qq-prompt-dialog-selector">
+                        <div class="qq-dialog-message-selector"></div>
+                        <input type="text">
+                        <div class="qq-dialog-buttons">
+                            <button type="button" class="button button-raised qq-cancel-button-selector">Cancel</button>
+                            <button type="button" class="button button-raised qq-ok-button-selector">Ok</button>
+                        </div>
+                    </dialog>
+                </div>
+            </script>
+
+            <style>
+                #trigger-upload {
+                    color: white;
+                    background-color: #00897b;
+                    font-size: 14px;
+                    padding: 7px 20px;
+                    background-image: none;
+                }
+                
+                #fine-uploader-manual-trigger .buttons {
+                    width: 100%;
+                }
+                
+                #fine-uploader-manual-trigger .qq-uploader .qq-total-progress-bar-container {
+                    width: 100%;
+                }
+
+                .md .list ul ul {
+                    padding-left: 0;
+                }
+            </style>
+
+            <!--upload-->
+
+            <div class="block-title center">Create A Free Account</div>
+            <div class="">
+                <div class="list">
+                    <ul>
+                        <li class="item-content item-input">
+
+                            <div class="item-inner">
+                                <div class="item-title item-label">Name</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" placeholder="Your name" required validate id="reg-name">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="item-content item-input">
+
+                            <div class="item-inner">
+                                <div class="item-title item-label">E-mail Address</div>
+                                <div class="item-input-wrap">
+                                    <input type="email" placeholder="Your e-mail" required validate id="reg-email">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Password</div>
+                                <div class="item-input-wrap">
+                                    <input type="password" placeholder="Password" required validate id="reg-password">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Phone Number</div>
+                                <div class="item-input-wrap">
+                                    <input type="text" id="reg-phone" placeholder="Enter phone number" required validate pattern="[0-9]*" data-error-message="Only numbers please!">
+                                    <span class="input-clear-button"></span>
+                                </div>
+                            </div>
+                        </li>
+
+                        
+                        <li class="item-content item-input">
+                            <div class="item-inner">
+                                <div class="item-title item-label">Gender</div>
+                                <div class="item-input-wrap input-dropdown-wrap">
+                                    <select placeholder="Please choose..." id="reg-gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </li>
+
+                        <input type="hidden" name="images" id="reg-image">                    
+                        
+
+                        <div id="fine-uploader-manual-trigger"></div>
+
+                    </ul>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    return {
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                $(".finish-reg").on("click", function(e) {
+                    e.preventDefault();
+                    //console.log($$("#up-btn"));
+                    //alert("Hello");
+
+                    var image_name = $("#reg-image").val();
+
+                    //var self = this;
+                    // Create toast
+                    if(image_name == ""){
+                        var toasts = app.toast.create({
+                            text: 'You have not upload your profile picture',
+                            position: 'bottom',
+                            closeTimeout: 3000
+                        });
+
+                        toasts.open();
+                        vibration();
+
+                        return;
+                    }
+
+                    //Get all vars
+
+                    var name = $("#reg-name").val();
+                    var password = $("#reg-password").val();
+                    var email = $("#reg-email").val();
+                    var phone = $("#reg-phone").val();
+                    
+                    var gender = $("#reg-gender").val();
+                    
+                    var image = image_name;                    
+
+                    if((name == "") || (password == "") || (email == "") || (phone == "")  || (gender == "") ){
+                        var toasts = app.toast.create({
+                            text: 'All fields are required',
+                            position: 'bottom',
+                            closeTimeout: 3000
+                        });
+
+                        toasts.open();
+                        vibration();
+
+                        return;
+                    }
+
+                    //create ajax to submit form
+                    app.dialog.preloader('Please wait...');
+                    $.ajax({
+                       url: url,
+                       type: 'post',
+                       dataType: 'json',
+                       crossDomain: true,
+                       timeout: 45000,
+                       data: {
+                           'reg-ok': '',
+                           'name': name,
+                           'password': password,
+                           'email': email,
+                           'phone': phone,
+                           'gender': gender,                           
+                           'image': image
+                       },
+                        success: function (f) {
+                            vibration();
+                           //console.log(f);
+                           app.dialog.close();
+
+                            if(f.ok == 1){
+                                $("#reg-name").val("");
+                                $("#reg-password").val("");
+                                $("#reg-email").val("");
+                                $("#reg-phone").val("");
+                                
+                                $("#reg-gender").val("");
+                                
+                                $(".qq-upload-list-selector").remove();
+                                $("#reg-image").val("");
+                            }
+
+                            var t = app.toast.create({
+                                text: f.msg,
+                                position: 'bottom',
+                                closeTimeout: 3000
+                            }).open();
+                        },
+                        error: function (e) {
+                           app.dialog.close();
+                           console.log(e);
+                           app.toast.create({
+                               text: 'Network error, please ensure that you have active internet connections!',
+                               position: 'bottom',
+                               closeTimeout: 3000
+                           }).open();
+                           vibration();
+                        }
+                    });
+
+
+                });
+
+                var manualUploader = new qq.FineUploader({
+                    element: document.getElementById('fine-uploader-manual-trigger'),
+                    template: 'qq-template-manual-trigger',
+                    request: {
+                        endpoint: server_upload_url + 'upload.php',
+                        params: {
+                            'project': 'mcq',
+                            'folder': 'users'
+                        }
+                    },
+                    thumbnails: {
+                        placeholders: {
+                            waitingPath: 'lib/upload/waiting-generic.png',
+                            notAvailablePath: 'lib/upload/not_available-generic.png'
+                        }
+                    },
+                    validation: {
+                        allowedExtensions: ['jpeg', 'jpg', 'png'],
+                        itemLimit: 1,
+                        sizeLimit: 2097152 // 50 kB = 50 * 1024 bytes
+                    },
+                    autoUpload: true,
+                    debug: false,
+                    callbacks: {
+                        onComplete: function(id, name, responseJSON, xhr) {
+                            var image_name = (responseJSON.image_name);
+                            $("[name=images]").val(image_name);
+                            //console.log(responseJSON);
+                        }
+                    }
+                });
+
+                qq(document.getElementById("trigger-upload")).attach("click", function() {
+                    manualUploader.uploadStoredFiles();
+                });
+            }
+        },
+    }
+</script>

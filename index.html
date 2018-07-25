@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>MCQ Test</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="lib/f7/css/framework7.min.css">   
+    <link rel="stylesheet" href="lib/f7/css/framework7.material.colors.min.css"> 
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="lib/upload/fine-uploader-new.min.css">
+</head>
+<body class="theme-indigo">
+<!-- App root element -->
+<!-- App root -->
+
+  <div id="app">
+    <div class="statusbar"></div>
+    <div class="panel panel-left panel-cover">
+      <div class="page">
+        <div class="page-content">
+          <div class="block-title">User Menu</div>          
+          <div class="list links-list">
+            <ul>
+              <li>
+                <a href="/home/" class="panel-close">Dashboard</a>
+              </li>
+              <li>
+                <a href="/subjects/" class="panel-close">Choose Subject</a>
+              </li>
+              <li>
+                <a href="/year-book/" class="panel-close">View Scores</a>
+              </li>
+              <li>
+                <a href="/students/" class="panel-close">Leaderboard</a>
+              </li>
+              <li>
+                <a href="/profile/" class="panel-close">Edit Profile</a>
+              </li>
+              <li>
+                <a href="/logout/" class="panel-close">Logout</a>
+              </li>              
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="view view-main view-init" data-url="/">
+
+      <div class="page">        
+        <div class="page-content slider-page">
+
+          <div class="block">
+            <h1 class="center" style="padding: 10px;">Mobile App Aptitude Test</h1>           
+          </div>
+
+          <!-- next info -->
+
+          <div class="block center">
+            <h4>Designed by</h4>
+            <p>
+              Oladoye Olalekan John
+            </p>
+
+            <h4>Supervised by</h4>
+            <p>
+              Pastor E.O. Faleye
+            </p>
+          </div>
+
+
+          <div class="block">
+            <div class="row">
+              <a class="button button-fill button-round col" href="/login/"> <i class="icon material-icons md-only">person</i> Login</a>
+              <a class="button button-fill button-round col" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
+            </div> 
+            <br>
+            <div class="row">
+              <a href="/about/" class="col button button-fill button-round">About</a>
+            </div>          
+          </div>
+
+          
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+<script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="lib/f7/js/framework7.min.js"></script>
+<!-- Path to your app js-->
+
+<script type="text/javascript" src="lib/upload/fine-uploader.min.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript" src="js/routes.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
