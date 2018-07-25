@@ -19,9 +19,9 @@
     <!-- Define the main entry-point to the application -->
     <content src="index.html" />
 
-    <preference name="DisallowOverscroll"         value="true" />
+    <!-- <preference name="DisallowOverscroll"         value="true" /> -->
     <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
-    <preference name="android-minSdkVersion"      value="14" />
+    <!-- <preference name="android-minSdkVersion"      value="14" /> -->
 
     
 
@@ -35,7 +35,6 @@
     <!-- <plugin name="cordova-plugin-whitelist" spec="1.2.2" /> -->
 
     <plugin name="cordova-plugin-vibration"  />
-    <plugin name="cordova-plugin-drawoverapps"  />
 
 
     <!-- Define app icon and splashscreen for each platform. -->
