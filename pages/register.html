@@ -278,6 +278,7 @@
                                 position: 'bottom',
                                 closeTimeout: 3000
                             }).open();
+                            mainView.router.navigate("/login/",{});
                         },
                         error: function (e) {
                            app.dialog.close();
@@ -303,6 +304,13 @@
                             'project': 'mcq',
                             'folder': 'users'
                         }
+                    },
+                    cors: {
+                    //all requests are expected to be cross-domain requests
+                        expected: true,
+
+                        //if you want cookies to be sent along with the request
+                        sendCredentials: true
                     },
                     thumbnails: {
                         placeholders: {

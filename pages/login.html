@@ -70,7 +70,9 @@
                 var app = this.$app;                
                 var user_id = sessionStorage.getItem("user_id");
                 if ((user_id != "") && (user_id != null)) {
-                    mainView.router.navigate("/home/");
+                    ///mainView.router.navigate("/home/");
+
+                    mainView.router.navigate("/home/",{});
                 }
 
                 $("body").on("click",".btn-login",function (e) {
