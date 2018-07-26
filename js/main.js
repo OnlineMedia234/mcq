@@ -32,14 +32,14 @@ function display_toast(msg){
 
 
 function vibration() {
-   var time = 3000;
+   var time = 1000;
    navigator.vibrate(time);
 }
 
 
 //document.addEventListener("deviceready", onDeviceReady, false);
 
-function closeApp(){
+/*function closeApp(){
 	window.overApps.closeOverApp();
 }
 
@@ -63,4 +63,4 @@ function onDeviceReady(){
 	 },function (err){
 	   		console.log(err);
 	 });
-}
+}*/
