@@ -78,14 +78,14 @@
 }
 
 @font-face {
-  font-family: 'Didot Regular';
+  font-family: 'Didot Reguflar';
   src: url('../fonts/Didot Regular.ttf') format("truetype");
 }
 
 .logo{
   font-family: 'Didot Regular';
   font-size: 2em;
-  color: #3f51b5;
+  color: #fb1212;
   margin-bottom: 25px;
 }
 
@@ -251,4 +251,43 @@ div.demo-lazy {
     z-index: 9999;
     display: none;
 
+}
+
+
+
+.question-box{
+  min-height: 150px;
+}
+
+
+.answer-box{
+  border: #d0d0d0 solid 1px;
+  padding: 8px 6px;
+  margin: 5px 8px;
+}
+
+@font-face {
+    font-family: 'digit';
+    src: url('../fonts/DS-DIGIT.ttf') format("opentype");
+}
+
+
+.time-section{
+
+    text-align: center;
+}
+
+.time-section span{
+    font-family: digit;
+    font-size: 24px;
+}
+
+.t-time-section{
+
+    text-align: center;
+}
+
+.t-time-section span{
+    font-family: digit;
+    font-size: 24px;
 }
