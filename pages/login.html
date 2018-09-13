@@ -3,9 +3,13 @@
         <div class="page-content login-screen-content login-page">
             <!--<div class="login-screen-title">Mobile Year Book</div>-->
             <form class="login-form">
-                <p align="cener" style="text-align: center">
-                    <h4 class="logo center">MCQ Test</h4>
+                <p align="center" style="text-align: center" class="center">
+                    <h4 class="logo center">Apptitude Test</h4>                    
                 </p>
+
+                <div class="center">
+                    <img src="img/logo.png">
+                </div>
                 <div class="list">
                     <ul>
                         <li class="item-content item-input item-input-with-value">                        
@@ -35,7 +39,7 @@
                             <div class="col-50">
                                 <ul id="signIn-btn">
                                     <li>
-                                        <a class="button button-round button-fill btn-login" href="#">Sign In</a>
+                                        <a class="button button-round button-outline btn-login" href="#">Sign In</a>
                                     </li>
                                 </ul>
                                 <div class="center hide" id="loader">
@@ -54,10 +58,10 @@
                 <div class="row">
                     <!-- <a class="" > <i class="icon material-icons md-only">arrow_left</i> Login</a> -->
 
-                    <a href="#" class="button button-round col back button-fill">
+                    <a href="#" class="button button-round col back button-outline">
                         <i class="icon icon-back"></i> Back
                     </a>
-                    <a class="button button-round col button-fill" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
+                    <a class="button button-round col button-outline" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
                 </div>
             </div>
         </div>
@@ -86,7 +90,7 @@
                         
                         app.toast.create({
                             text: 'Please fill all fields',
-                            position: 'bottom',
+                            position: 'center',
                             closeTimeout: 3000
                         }).open(); 
                         vibration();                       

@@ -1,0 +1,325 @@
+<template>
+    <div class="page">        
+        <div class="navbar">
+            <div class="navbar-inner">
+                <!-- <div class="left">
+                      <a href="/" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div> -->
+                <div class="title sliding">{{$route.query.name}} - Test</div>
+                <div class="right time-section">
+                    <span id="time_rem_hour">00</span> <span> : </span>
+                            <span id="time_rem_minute">00</span> <span> : </span>
+                            <span id="time_rem_seconds">00</span>
+                            &nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="page-content">            
+            
+            <h3 class="center">{{$route.query.name}} - Test</h3>            
+
+            <div class="quiz-page">
+                <form action="" id="quiz-form" class="quiz-form">
+                    <div id="the-quiz"></div>
+
+                    <div class="padding submit-btn hide">
+                        <div class="row sub-btn">
+                            <input type="hidden" name="cat_id" id="cat" value="{{$route.query.id}}">
+                            <input type="hidden" name="user_id" value="{{user_id}}">
+                            <input type="hidden" name="end_quiz" value="yes">
+                            <input type="submit" class="button button-raised button-outline col sub-test" value="Submit">
+                        </div>
+                    </div>
+                </form>   
+            </div>
+
+
+            <div class="result-form hide">
+            <div class="block">
+                <div class="block-title">Test Summary</div>
+                <div class="center win hide">
+                    <img src="img/win.jpeg" class="img-responsive">
+                </div>                
+
+                <div class="center loss hide">
+                    <img src="img/loss.jpeg" class="img-responsive">
+                </div>                
+
+                <div class="padding">                    
+                    <div class="row">
+                        <div class="col-60">
+                            Your test result is
+                        </div>
+                        <div class="col-40 center">
+                            <div id="summary"></div>
+                        </div>  
+                    </div>
+                    <p>
+                        Total Number of Questions : <strong class="right"><span id="total_q"></span></strong>
+                    </p>
+                    <p>
+                        Total Answered :  <strong class="right"><span id="total_a"></span></strong>
+                    </p>
+                    <p>
+                        Total Unanswered :  <strong class="right"><span id="total_u"></span></strong>
+                    </p>
+
+                    <p>
+                        Total Score :  <strong class="right"><span class="scores"></span> <span id="perc"></span></strong>
+                    </p>
+
+                    <p>
+                        Wrong Answer: <strong class="right"><span id="wrong"></span></strong>
+                    </p>
+                    
+
+                    <div class="row">
+                        <a href="/home/" class="col button button-round button-outline">Main Menu</a>
+                        <a href="/subjects/" class="col button button-round button-outline">Test Category</a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>         
+            
+
+
+
+        </div>
+    </div>
+
+</template>
+<script>
+    return {        
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                var $$ = this.$;                
+                var router = this.$router;        
+                var user_id = sessionStorage.getItem("user_id");
+                if((user_id === "") || (user_id === null)){                    
+                    mainView.router.navigate('/login/');
+                    window.location = "index.html";
+                }            
+
+                var q_id = $("#cat").val();
+                if(q_id == "" || q_id == null){
+                    return;
+                }
+
+                app.view.main.history.pop();
+
+
+                $.ajax({
+                   'url': url,
+                   'type': 'GET',
+                   'dataType': 'json',
+                   'data':{
+                       'load_questions': '',
+                       'q_cat': $("#cat").val()
+                   },
+                    success:function (f) {
+                        console.log(f);
+                       var the_questions = f.question;
+                       var total_q = the_questions.length;
+                        var total_q_s = total_q - 1;
+                       for(var k = 0; k < total_q; k++){
+                           var n = parseInt(k) +1;
+                           var p = parseInt(k) - 1;
+                           if(k == 0){
+                                var prev = "<a href='#' class='disabled button button-outline col'>&laquo; Previous</a>";
+                                var next = "<a href='#' class='next-q button button-outline col' data-q='"+n+"'>Next &raquo;</a>";
+                                var c = "";
+                           }else if(k == total_q_s){
+                               var next = "<a href='#' class='disabled button button-outline col'>&raquo; Next</a>";
+                               var prev = "<a href='#' class='next-q button button-outline col' data-q='"+p+"'>&laquo; Previous</a>";
+                               var c = "hide";
+                           }else{
+                               var prev = "<a href='#' class='next-q button button-outline col' data-q='"+p+"'>&laquo; Previous</a>";
+                               var next = "<a href='#' class='next-q button button-outline col' data-q='"+n+"'>&raquo; Next</a>";
+                               var c = "hide";
+                           }
+                           var l = parseInt(k)+1;
+                           
+                           var q = '<div class="all-q  '+c+'" data-q-id="'+k+'">';
+                                q += '<h4 class="center">Question '+l+'</h4>';
+                                q += '<div class="card card-outline question-box">';
+                                q += '<div class="card-content card-content-padding">';
+                                q += the_questions[k].question
+                                q +='</div></div>';
+
+                                q += '<div class="paddings"><label>';
+                                q += '<div class="answer-box">';
+                                q += '<input type="radio" name="q_'+k+'" value="A">A '+the_questions[k].a+'</div></label></div>';
+
+                                q += '<div class="paddings"><label>';
+                                q += '<div class="answer-box">';
+                                q += '<input type="radio" name="q_'+k+'" value="B">B '+the_questions[k].b+'</div></label></div>';
+
+                                q += '<div class="paddings"><label>';
+                                q += '<div class="answer-box">';
+                                q += '<input type="radio" name="q_'+k+'" value="C">C '+the_questions[k].c+'</div></label></div>';
+
+                                q += '<div class="paddings"><label>';
+                                q += '<div class="answer-box">';
+                                q += '<input type="radio" name="q_'+k+'" value="D">D '+the_questions[k].d+'</div></label></div>';
+
+                                q += '<input type="hidden" name="q[]" value="'+the_questions[k].id+'">';
+
+                                q += '<div class="padding"><div class="row">';
+                                q += prev;
+                                q += next;
+                                q += '</div></div>';
+
+                                q += "</div>";
+
+                                //console.log(q);
+
+                                $("#the-quiz").append(q);
+                           
+                       }
+                        //console.log(f);
+                        time_rem = f.timer;
+                        $.getScript('js/timer.js', function()
+                        {
+                            //myApp.alert("finally here");
+                            //console.log(time_rem);
+                            $$(".time-section").removeClass('hide');
+                        });
+                        $$(".submit-btn").removeClass('hide');
+                        //myApp.hideIndicator();
+                    },
+                    error: function (e) {
+                        show_toast("Network error");                        
+                        console.log(e.responseText);
+                    }
+                });
+
+
+                $("body").off('click', '.next-q').on('click', '.next-q',function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr("data-q");
+                    $(".all-q").addClass("hide");
+                    $("[data-q-id="+id+"]").removeClass('hide');
+                    console.log(id);
+                });
+
+                $("body").off('click', '.prev-q').on('click', '.prev-q',function(e) {
+                    e.preventDefault();
+                    var id = $(this).attr("data-q");
+                    $(".all-q").addClass("hide");
+                    $("[data-q-id="+id+"]").removeClass('hide');
+                    console.log(id);
+                });
+
+                $("body").off('submit', '.quiz-form').on('submit', '.quiz-form',function(e) {
+                    if(time_rem > 0){
+                        app.dialog.confirm('Are you sure you want to submit?', function () {                            
+                            submission();
+                        });
+                    }else{
+                        submission();
+                    }
+
+                    e.preventDefault();
+                });
+
+
+
+                function submission(){
+                    var datas = $("#quiz-form").serialize();
+
+                    app.dialog.preloader('Submitting result, Please wait...');
+                    $.ajax({
+                       'url': url+'?'+datas,
+                       'type': 'GET',
+                        'dataType': 'json',
+                       'crossDomain': true,
+                        success: function (f) {
+                            console.log(f);
+                            $$(".time-section").addClass('hide');
+                            $$(".quiz-page").addClass('hide');
+                            var scores = f.correct;
+                            var total_q = f.total_q;
+                            var answered = f.answered;
+                            var not_answered = f.not_answered;
+                            var wrong = f.wrong;
+                            scores = parseInt(scores);
+                            //var rem = remark(scores);
+                            var values = parseFloat(scores/total_q);
+                            $("#summary").attr("data-value",values);
+                            $("#summary").attr("data-value-text",f.perc+ "%" );
+
+
+
+
+                            
+                            $("#wrong").html(wrong);
+                            $("#total_q").html(total_q);
+                            $("#total_a").html(answered);
+                            $("#total_u").html(not_answered);
+                            $(".scores").html(scores);
+                            $("#perc").html("("+f.perc+" %)");
+                            //$("#rem").html(rem);
+                            $$(".result-form").removeClass('hide');
+                            app.dialog.close();
+
+
+                            var color;
+
+                            if(values < 0.5){
+                                color = "#fc0105";
+                                $(".win").addClass("hide");
+                                $(".loss").removeClass("hide");
+                            }else{
+                                color = "#2196f3";
+                                $(".loss").addClass("hide");
+                                $(".win").removeClass("hide");
+                            }
+
+                                
+                                var demoGauge = app.gauge.create({
+                                  el: '#summary',
+                                  type: 'circle',
+                                  value: values,
+                                  size: 120,
+                                  borderColor: color,
+                                  borderWidth: 7,
+                                  valueText: f.perc + '%',
+                                  valueTextColor: color,
+                                });
+
+                                $("#quiz-form").remove();                                
+
+                                clearInterval(counter2);
+                        },
+                        error: function (e) {
+                           app.dialog.close();
+                           show_toast("Network error, Please try again!");
+                            console.log(e);
+                        }
+                    });
+                }
+
+            },
+            pageBeforeRemove: function (e, page) {
+                app.view.main.history.pop();
+                if (this.demoGauge) this.demoGauge.destroy();
+              },
+        },
+        data: function () {        
+            return {
+                user_name: sessionStorage.getItem("name"),
+                email: sessionStorage.getItem("email"),
+                phone: sessionStorage.getItem("phone"),
+                gender: sessionStorage.getItem("gender"), 
+                user_id: sessionStorage.getItem("user_id"),               
+                image: server_upload_url+""+app_path+"users/thumb/"+sessionStorage.getItem("image")
+            }
+        },
+    }
+</script>

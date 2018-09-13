@@ -15,7 +15,7 @@
             <div class="block-title">Hi {{user_name}}</div>
             <div class="padding">
                 <div class="user-img">
-                    <img src="{{image}}" class="img-responsive">
+                    <img src="{{image}}" class="img-responsive user-imgs">
                 </div>
                 
 
@@ -68,6 +68,14 @@
                     
                     mainView.router.navigate('/login/');
                 }
+
+
+                $("body").off("click",".logout").on("click",".logout", function(e){
+                    app.dialog.confirm("Are you sure you want to logout?",function(){
+                        mainView.history.pop();
+                        mainView.router.navigate('/');
+                    });
+                });
             }
         },
         data: function () {        

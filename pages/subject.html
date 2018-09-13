@@ -1,0 +1,114 @@
+<template>
+    <div class="page">        
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                      <a href="/" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title sliding">Test Category</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">Hi {{user_name}}</div>
+            <div class="padding">                
+                <div class="content-block loader">
+                    <div class="ks-preloaders">
+                        <div class="center">
+                            <span class="preloader pre-load"></span>
+                            Loading test categories...
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-block main-cat hide">
+                    <div class="content-block-title">Select a Category</div>
+                    <div class='list links-list'>
+                        <ul class="the-list">
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
+<script>
+    return {        
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                var $$ = this.$;                
+                var router = this.$router;        
+                var user_id = sessionStorage.getItem("user_id");
+                if((user_id === "") || (user_id === null)){                    
+                    mainView.router.navigate('/login/');
+                    window.location = "index.html";
+                }
+
+                console.log("here...");
+
+
+                var rand = Math.floor(Math.random() * 3);
+    if(rand == 0){
+        var class_c = "preloader-blue";
+    }else if(rand == 1){
+        var class_c = "preloader-amber";
+    }else if(rand == 2){
+        var class_c = "preloader-green";
+    }else{
+        var class_c = "preloader-red";
+    }
+
+    $(".pre-load").addClass(class_c);
+    $$(".the-list").html('');
+
+    $.ajax({
+        url: url,
+        data: {
+            'categories': ''
+        },
+        type: 'GET',
+        dataType: 'json',
+        crossDomain : true,
+        cache: true,
+        success:function(f){
+            //console.log(f.ok);
+            //console.log(f.result);
+            $$(".the-list").html('');
+            var res = f.result;
+            for(var k = 0; k < res.length; k++) {
+                var the_id = res[k].id;
+                var the_name = res[k].category;
+                //console.log(the_id);
+                var a = "<li><a href=\"/quiz/?id="+the_id+"&name="+the_name+"\" class='start-quiz' data-quiz-name='"+the_name+"' data-quiz-id='"+the_id+"'>";
+                a += "<div class='item-inner'><div class='item-title'>"+the_name+"</div></div></a></li>";
+
+                $$(".the-list").append(a);
+            }
+            $$(".loader").remove();
+            $(".main-cat").removeClass('hide');
+        },
+        error: function (e) {
+            console.log(e.responseText);
+            myApp.alert("Network problem");
+            $$(".loader").remove();
+        },
+        timeout:60000
+    });
+            }
+        },
+        data: function () {        
+            return {
+                user_name: sessionStorage.getItem("name"),
+                email: sessionStorage.getItem("email"),
+                phone: sessionStorage.getItem("phone"),
+                gender: sessionStorage.getItem("gender"),                
+                image: server_upload_url+""+app_path+"users/thumb/"+sessionStorage.getItem("image")
+            }
+        },
+    }
+</script>

@@ -35,7 +35,8 @@
     <!-- <plugin name="cordova-plugin-whitelist" spec="1.2.2" /> -->
 
     <plugin name="cordova-plugin-vibration"  />
-
+<!--     <plugin name="cordova-plugin-drawoverapps"  />
+ -->
 
     <!-- Define app icon and splashscreen for each platform. -->
     <icon src="img/icon.jpg" />

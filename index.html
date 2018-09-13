@@ -11,12 +11,12 @@
     <title>MCQ Test</title>
     <!-- Path to Framework7 Library CSS -->
     <link rel="stylesheet" href="lib/f7/css/framework7.min.css">   
-    <link rel="stylesheet" href="lib/f7/css/framework7.material.colors.min.css"> 
+    
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="lib/upload/fine-uploader-new.min.css">
 </head>
-<body class="theme-indigo">
+<body class="color-theme-red">
 <!-- App root element -->
 <!-- App root -->
 
@@ -32,19 +32,19 @@
                 <a href="/home/" class="panel-close">Dashboard</a>
               </li>
               <li>
-                <a href="/subjects/" class="panel-close">Choose Subject</a>
+                <a href="/subjects/" class="panel-close">Choose Category</a>
               </li>
               <li>
-                <a href="/year-book/" class="panel-close">View Scores</a>
+                <a href="/scores/" class="panel-close">View Scores</a>
               </li>
               <li>
-                <a href="/students/" class="panel-close">Leaderboard</a>
+                <a href="/leaders/" class="panel-close">Leaderboard</a>
               </li>
               <li>
                 <a href="/profile/" class="panel-close">Edit Profile</a>
               </li>
               <li>
-                <a href="/logout/" class="panel-close">Logout</a>
+                <a href="" class="panel-close logout">Logout</a>
               </li>              
             </ul>
           </div>
@@ -56,10 +56,13 @@
     <div class="view view-main view-init" data-url="/">
 
       <div class="page">        
-        <div class="page-content slider-page">
-
+        <div class="page-content slider-page">          
           <div class="block">
             <h1 class="center" style="padding: 10px;">Mobile App Aptitude Test</h1>           
+          </div>
+
+          <div class="center">
+            <img src="img/logo.png">
           </div>
 
           <!-- next info -->
@@ -67,7 +70,7 @@
           <div class="block center">
             <h4>Designed by</h4>
             <p>
-              Oladoye Olalekan John
+              Oladoye Olalekan John - HC201600890
             </p>
 
             <h4>Supervised by</h4>
@@ -79,12 +82,12 @@
 
           <div class="block">
             <div class="row">
-              <a class="button button-fill button-round col" href="/login/"> <i class="icon material-icons md-only">person</i> Login</a>
-              <a class="button button-fill button-round col" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
+              <a class="button button-outline button-round col" href="/login/"> <i class="icon material-icons md-only">person</i> Login</a>
+              <a class="button button-outline button-round col" href="/register/"> <i class="icon material-icons md-only">person</i> Sign Up</a>
             </div> 
             <br>
             <div class="row">
-              <a href="/about/" class="col button button-fill button-round">About</a>
+              <a href="/about/" class="col button button-outline button-round">About</a>
             </div>          
           </div>
 
@@ -106,5 +109,7 @@
 <script type="text/javascript" src="js/routes.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+
+<!-- <script type="text/javascript" src="js/timer.js"></script> -->
 </body>
 </html>

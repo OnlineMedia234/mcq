@@ -1,0 +1,109 @@
+<template>
+    <div class="page">        
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="left">
+                      <a href="/" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="ios-only">Back</span>
+                    </a>
+                </div>
+                <div class="title sliding">My Scores</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">Hi {{user_name}}</div>
+            <div class="padding result data-table"></div>
+        </div>
+    </div>
+
+</template>
+<script>
+    return {        
+        on: {
+            pageInit: function() {
+                var app = this.$app;
+                var $$ = this.$;                
+                var router = this.$router;        
+                var user_id = sessionStorage.getItem("user_id");
+                if((user_id === "") || (user_id === null)){                    
+                    mainView.router.navigate('/login/');
+                }
+
+
+                fetch_history();
+
+
+
+
+
+                function fetch_history(){
+                  app.preloader.show();
+                  $.ajax({
+                    url: url,
+                    type: 'GET',
+                    dataType: 'json',
+                    data: {
+                      load_score: '',
+                      user_id: sessionStorage.getItem("user_id")          
+                    },
+                    timeout:30000,
+                    success:function(f){
+                      app.preloader.hide();
+                      console.log(f);
+                      var t = f.total;
+                      if(t == 0){
+                        $(".result").html("<div class='alert alert-info'>You have not done any Test!</div>");
+                      }else{
+                        var a = "<h3 class='page-header'>Test History</h3>";
+                        a += "<div class='table-responsive'>";
+                        a += "<table class='table table-bordered'>";
+                        a += "<thead><tr><th>Sn</th><th>Subject</th>";
+                        a += "<th>Score</th><th>Date</th><tbody>";
+                        var i = f.data.length;
+
+                        for(var j = 0; j < i; j++)
+                        {
+                          //var name = f.data[j].name;
+                          var subject = f.data[j].subject;
+                          var score = f.data[j].score;
+                          var day = f.data[j].day;
+                          var k = j+1;
+                          a += "<tr><td>"+k+"</td>";
+                          a += "<td>"+subject+"</td>";
+                          //a += "<td>"+name+"</td>";
+                          a += "<td>"+score+"</td>";
+                          a += "<td>"+day+"</td></tr>";
+                        }
+                        a += "</tbody></table></div>";
+                        $(".result").html(a);
+                      }
+                      $("#load-over").hide();
+                      $("#loading").hide();
+                    },
+                    error:function(e){
+                      console.log(e);
+                      app.dialog.alert("Network error");
+                      app.preloader.hide();
+                      $("#load-over").hide();
+                      $("#loading").hide();
+                    }
+                  });
+
+                }
+
+
+
+            }
+        },
+        data: function () {        
+            return {
+                user_name: sessionStorage.getItem("name"),
+                email: sessionStorage.getItem("email"),
+                phone: sessionStorage.getItem("phone"),
+                gender: sessionStorage.getItem("gender"),                
+                image: server_upload_url+""+app_path+"users/thumb/"+sessionStorage.getItem("image")
+            }
+        },
+    }
+</script>
