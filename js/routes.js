@@ -12,6 +12,10 @@ var routes=[ // Index page
 }
 ,
 {
+    path: '/password/', componentUrl: './pages/password.html', name: 'password',
+}
+,
+{
     path: '/register/', componentUrl: './pages/register.html', name: 'login',
 }
 ,
@@ -20,10 +24,10 @@ var routes=[ // Index page
 }
 ,
 {
-    path: '/subjects/', componentUrl: './pages/students.html', name: 'subject',
+    path: '/subjects/', componentUrl: './pages/subject.html', name: 'subject',
 },
 {
-    path: '/quiz/', componentUrl: './pages/view_student.html', name: 'view_student',
+    path: '/quiz/', componentUrl: './pages/quiz.html', name: 'view_student',
 }
 ,
 {
@@ -31,14 +35,14 @@ var routes=[ // Index page
 }
 ,
 {
-    path: '/profile/', componentUrl: './pages/yearbook.html', name: 'yearbook',
+    path: '/profile/', componentUrl: './pages/profile.html', name: 'profile',
 }
 ,
 {
-    path: '/leaders/', componentUrl: './pages/yearbook.html', name: 'yearbook',
+    path: '/leaders/', componentUrl: './pages/leaders.html', name: 'leaders',
 },
 {
-    path: '/scores/', componentUrl: './pages/yearbook.html', name: 'yearbook',
+    path: '/scores/', componentUrl: './pages/scores.html', name: 'scores',
 }
 
 , // Default route (404 page). MUST BE THE LAST

@@ -1,6 +1,6 @@
 //Settings FILE
 
-var app_name = "MCQ App";
+var app_name = "Mobile Aptitude";
 var developer_url = "https://onlinemedia.com.ng";
 var developer_email = "admin@onlinemedia.com.ng";
 var supervisor = "OnlineMedia";
@@ -43,16 +43,10 @@ function is_login() {
     }
 }
 
-function show_toast(msg,color) {
-    if(color == "red"){
-        var title = '<i class="fa fa-warning"></i>';
-    }else{
-        var title = '';
-    }
-    iziToast.show({
-        title: title,
-        message: msg,
-        color: color,
-        timeout: 7000
-    });
+function show_toast(msg) {
+    app.toast.create({
+        text: msg,
+        position: 'center',
+        closeTimeout: 2500
+    }).open();
 }

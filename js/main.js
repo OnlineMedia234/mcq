@@ -32,7 +32,7 @@ function display_toast(msg){
 
 
 function vibration() {
-   var time = 1000;
+   var time = 500;
    navigator.vibrate(time);
 }
 
